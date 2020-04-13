@@ -3,6 +3,8 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CreateDepartmentsTable extends Migration
 {
@@ -21,6 +23,34 @@ class CreateDepartmentsTable extends Migration
                 ->nullable();
             $table->timestamps();
         });
+
+        $now = Carbon::now();
+
+        // add default values to the table
+        DB::table('departments')->insert(
+            [
+                [
+                    'name'          => 'Sales',
+                    'created_at'    => $now,
+                    'updated_at'    => $now
+                ],
+                [
+                    'name'          => 'Human Resources',
+                    'created_at'    => $now,
+                    'updated_at'    => $now
+                ],
+                [
+                    'name'          => 'Management',
+                    'created_at'    => $now,
+                    'updated_at'    => $now
+                ],
+                [
+                    'name'          => 'Support',
+                    'created_at'    => $now,
+                    'updated_at'    => $now
+                ]
+            ]
+        );
     }
 
     /**

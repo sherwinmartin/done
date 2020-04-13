@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\DB;
 
 class CreateRolesTable extends Migration
 {
@@ -18,6 +19,15 @@ class CreateRolesTable extends Migration
             $table->string('name', 50)
                 ->unique();
         });
+
+        // add default values to the table
+        DB::table('roles')->insert(
+            [
+                ['name' => 'admin'],
+                ['name' => 'manager'],
+                ['name' => 'staff']
+            ]
+        );
     }
 
     /**
