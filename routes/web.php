@@ -27,3 +27,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/users/store', 'UserController@store')->name('users.store');
 Route::patch('/users/update', 'UserController@update')->name('users.update');
+
+// incident_types
+Route::get('incident-types', 'IncidentTypeController@index')->name('incidentTypes.index');
+Route::get('incident-types/{incidentType}/edit', 'IncidentTypeController@edit')->name('incidentTypes.edit');
+
+// users
+Route::get('/users', 'UserController@index')->name('users.index');
