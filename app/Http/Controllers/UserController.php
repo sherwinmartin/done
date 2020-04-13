@@ -9,6 +9,20 @@ use Illuminate\Http\Request;
 class UserController extends Controller
 {
     /**
+     * Display records
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index()
+    {
+        $data = [
+            'page_title'        => 'Users',
+            'navi_group'        => 'users',
+            'navi_submenu'      => 'users.index',
+            'users'             => User::get()
+        ];
+        return view('users.index');
+    }
+    /**
      * Store record.
      * @param UserRequest $request
      * @return \Illuminate\Http\RedirectResponse
