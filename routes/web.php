@@ -25,6 +25,11 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+// dashboard group
+Route::group(['prefix' => '/dashboard'],function ()
+{
+    Route::get('/', 'DashboardController@index')->name('dashboard');
+});
 Route::post('/users/store', 'UserController@store')->name('users.store');
 Route::patch('/users/update', 'UserController@update')->name('users.update');
 
