@@ -38,6 +38,10 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    /**
+     * Belongs to many departments.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
     public function departments()
     {
         return $this->belongsToMany(Department::class, 'department_user', 'user_id', 'department_id');
@@ -50,6 +54,15 @@ class User extends Authenticatable
     public function incidents()
     {
         return $this->hasMany(Incident::class);
+    }
+
+    /**
+     * Belongs to many projects.
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
+     */
+    public function projects()
+    {
+        return $this->belongsToMany(Project::class, 'project_user', 'user_id', 'project_id');
     }
 
     /**
