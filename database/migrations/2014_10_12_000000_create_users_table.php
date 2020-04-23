@@ -3,6 +3,9 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class CreateUsersTable extends Migration
 {
@@ -13,6 +16,8 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
+        $now = Carbon::now();
+
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('role_id');
@@ -35,6 +40,19 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->timestamps();
         });
+
+        // insert default admin user
+        DB::table('users')->insert(
+            [
+                'role_id'           => 1,
+                'username'          => 'admin',
+                'email'             => 'admin@doneapp.test',
+                'password'          => Hash::make('password'),
+                'is_enabled'        => 'Y',
+                'created_at'        => $now,
+                'updated_at'        => $now
+            ]
+        );
     }
 
     /**
