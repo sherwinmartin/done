@@ -20,7 +20,7 @@ class UserController extends Controller
             'navi_submenu'      => 'users.index',
             'users'             => User::get()
         ];
-        return view('users.index');
+        return view('users.index', $data);
     }
     /**
      * Store record.
