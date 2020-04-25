@@ -44,6 +44,7 @@ class Project extends Model
     {
         $project = new Project;
 
+        $project->company_id                = $request->project_id;
         $project->project_status_id         = $request->project_status_id;
         $project->name                      = $request->name;
         $project->description               = $request->description;
@@ -65,6 +66,7 @@ class Project extends Model
     {
         $project = Project::find($request->id);
 
+        $project->company_id                = $request->project_id;
         $project->project_status_id         = $request->project_status_id;
         $project->name                      = $request->name;
         $project->description               = $request->description;
