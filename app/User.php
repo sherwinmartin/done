@@ -75,6 +75,15 @@ class User extends Authenticatable
     }
 
     /**
+     * Accessor to full name.
+     * @return string
+     */
+    public function getFullNameAttribute()
+    {
+        return $this->attributes['first_name'].' '.$this->attributes['last_name'];
+    }
+
+    /**
      * Store record.
      * @param $request
      * @return bool
