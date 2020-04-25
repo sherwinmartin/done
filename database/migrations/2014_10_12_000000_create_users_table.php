@@ -24,8 +24,12 @@ class CreateUsersTable extends Migration
             $table->foreign('role_id')
                 ->references('id')
                 ->on('roles');
-            $table->string('username')
-                ->unique();
+            $table->unsignedBigInteger('company_id');
+            $table->foreign('company_id')
+                ->references('id')
+                ->on('companies');
+            $table->string('first_name');
+            $table->string('last_name');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -45,7 +49,9 @@ class CreateUsersTable extends Migration
         DB::table('users')->insert(
             [
                 'role_id'           => 1,
-                'username'          => 'admin',
+                'company_id'        => 1,
+                'first_name'        => 'admin',
+                'last_name'         => 'owner',
                 'email'             => 'admin@doneapp.test',
                 'password'          => Hash::make('password'),
                 'is_enabled'        => 'Y',
