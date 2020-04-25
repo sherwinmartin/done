@@ -84,6 +84,30 @@ class User extends Authenticatable
     }
 
     /**
+     * Check the role of the authenticated user.
+     * @param $role_names
+     * @return mixed
+     */
+    public static function hasRoles($role_names)
+    {
+        if (Auth::check())
+        {
+            $role_names = explode(',', $role_names);
+
+            // create array to store multiple roles to check
+            return User::select('roles.name')
+                ->join('roles', 'roles.id', '=', 'users.role_id')
+                ->where('users.id', Auth::User()->id)
+                ->where(function ($query) use ($role_names)
+                {
+                    $query->orWhereIn('roles.name', $role_names);
+                })->first();
+        }
+
+        return false;
+    }
+
+    /**
      * Store record.
      * @param $request
      * @return bool
