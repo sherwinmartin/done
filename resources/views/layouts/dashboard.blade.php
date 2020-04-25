@@ -7,6 +7,7 @@
 
     <!-- Bootstrap core CSS -->
     <link href="{{ mix('/css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
     @yield('custom_css')
 </head>
 <body>
@@ -86,6 +87,7 @@
     </div>
 
     <script src="{{ mix('/js/app.js') }}"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script>
     @yield('custom_js_footer')
 </body>
 </html>
