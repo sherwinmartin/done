@@ -39,6 +39,15 @@ class User extends Authenticatable
     ];
 
     /**
+     * Has one company.
+     * @return mixed
+     */
+    public function company()
+    {
+        return $this->hasOne(Company::class);
+    }
+
+    /**
      * Belongs to many departments.
      * @return \Illuminate\Database\Eloquent\Relations\BelongsToMany
      */
