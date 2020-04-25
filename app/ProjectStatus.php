@@ -17,6 +17,11 @@ class ProjectStatus extends Model
         return $this->hasMany(Project::class);
     }
 
+    /**
+     * Store record.
+     * @param $request
+     * @return bool
+     */
     public static function storeRecord($request)
     {
         $project_status = new ProjectStatus;
