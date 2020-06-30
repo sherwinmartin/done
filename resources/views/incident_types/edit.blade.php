@@ -17,7 +17,7 @@
 @section('page_header_options')
     @if (!$has_incidents)
         <button type="submit" class="btn btn-sm btn-outline-danger">
-            Delete
+            <i class="fas fa-trash"></i>
         </button>
     @endif
 @endsection
@@ -39,7 +39,7 @@
     <script>
         $('.btn-outline-danger').click(function()
         {
-            var cDelete = confirm('Are you sure you want to delete this Incident Type?');
+            let cDelete = confirm('Are you sure you want to delete this Incident Type?');
             if (cDelete === false)
             {
                 return false;
