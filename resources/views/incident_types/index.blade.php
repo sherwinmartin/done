@@ -1,9 +1,27 @@
 @extends('layouts.dashboard')
 
+@section('breadcrumb')
+    <ul class="breadcrumb">
+        <li class="breadcrumb-item">
+            <a href="{{ route('dashboard') }}">Dashboard</a>
+        </li>
+        <li class="breadcrumb-item active">
+            {{ $page_title }}
+        </li>
+    </ul>
+@endsection
+
 @section('content')
     <section class="card">
         <div class="card-body">
-            <h2>{{ $page_title }}</h2>
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{{ $page_title }}</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    <a href="{{ route('incidentTypes.create') }}" class="btn btn-sm btn-primary">
+                        <i class="fas fa-plus"></i>
+                    </a>
+                </div>
+            </div>
             @if ($incident_types)
                 <table class="table table-bordered table-striped">
                     <thead>
