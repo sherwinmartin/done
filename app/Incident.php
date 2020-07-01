@@ -4,6 +4,8 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
+use Carbon\Carbon;
+
 class Incident extends Model
 {
     protected $table = 'incidents';
@@ -24,6 +26,39 @@ class Incident extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Update record.
+     * @param $request
+     * @return bool
+     */
+    public static function updateRecord($request)
+    {
+        $incident = Incident::find($request->id);
+
+        $incident->user_id          = $request->user_id;
+        $incident->incident_type_id = $request->incident_type_id;
+        $incident->incident_date    = $request->incident_date;
+        $incident->description      = $request->description;
+        $incident->action_taken     = $request->action_taken;
+
+        if ($request->employee_reviewed_date)
+        {
+            if ($incident->employee_reviewed_date == NULL)
+            {
+                $incident->employee_reviewed_date   = Carbon::now();
+            }
+        }else{
+            $incident->employee_reviewed_date       = NULL;
+        }
+
+        if ($incident->save())
+        {
+            return true;
+        }
+
+        return false;
     }
 
     /**
