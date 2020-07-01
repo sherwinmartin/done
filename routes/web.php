@@ -41,5 +41,11 @@ Route::get('incident-types/{incidentType}/edit', 'IncidentTypeController@edit')-
 Route::patch('incident-types/update', 'IncidentTypeController@update')->name('incidentTypes.update');
 Route::delete('incident-types/delete', 'IncidentTypeController@destroy')->name('incidentTypes.destroy');
 
+// incidents
+Route::get('incidents', 'IncidentController@index')->name('incidents.index');
+Route::get('incidents/{incident}/edit', 'IncidentController@edit')->name('incidents.edit');
+Route::patch('incidents/update', 'IncidentController@update')->name('incidents.update');
+Route::delete('incidents/delete', 'IncidentController@destroy')->name('incidents.destroy');
+
 // users
 Route::get('/users', 'UserController@index')->name('users.index');
