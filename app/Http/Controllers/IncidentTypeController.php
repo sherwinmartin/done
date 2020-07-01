@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class IncidentTypeController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('role:admin,owner,manager');
+    }
+
     /**
      * Display records.
      * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
