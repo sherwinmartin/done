@@ -3,7 +3,7 @@
 @section('breadcrumb')
     <ul class="breadcrumb">
         <li class="breadcrumb-item">
-            <a href="">Dashboard</a>
+            <a href="{{ route('dashboard') }}">Dashboard</a>
         </li>
         <li class="breadcrumb-item">
             <a href="{{ route('incidentTypes.index') }}">Incident Types</a>
@@ -14,21 +14,29 @@
     </ul>
 @endsection
 
-@section('page_header_options')
-    @if (!$has_incidents)
-        <button type="submit" class="btn btn-sm btn-outline-danger">
-            <i class="fas fa-trash"></i>
-        </button>
-    @endif
-@endsection
-
 @section('content')
     <div class="card">
         <div class="card-body">
-            {{ Form::open() }}
+            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                <h1 class="h2">{{ $page_title }}</h1>
+                <div class="btn-toolbar mb-2 mb-md-0">
+                    @if (!$has_incidents)
+                        {{ Form::open(['method' => 'DELETE', 'route' => 'incidentTypes.destroy']) }}
+                            <button type="submit" class="btn btn-sm btn-outline-danger">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                            {{ Form::hidden('id', $incident_type->id) }}
+                        {{ Form::close() }}
+                    @endif
+                </div>
+            </div>
+            {{ Form::open(['method' => 'PATCH', 'route' => 'incidentTypes.update']) }}
                 @include('incident_types.partials.form')
                 <div class="form-group">
-                    {{ Form::submit('Save Changes', ['class' => 'btn btn-primary']) }}
+                    <button class="btn btn-primary" type="submit">
+                        Save Changes
+                    </button>
+                    {{ Form::hidden('id', $incident_type->id) }}
                 </div>
             {{ Form::close() }}
         </div>
