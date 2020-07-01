@@ -46,6 +46,10 @@
                                class="nav-link{{ (isset($navi_group) && $navi_group == 'incidentTypes')?' active':'' }}">
                                 Incident Types
                             </a>
+                            <a href="{{ route('incidents.index') }}"
+                                class="nav-link{{ (isset($navi_group) && $navi_group == 'incidents')?' active':'' }}">
+                                Incidents
+                            </a>
                         </li>
                     </ul>
 
