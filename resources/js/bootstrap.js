@@ -11,6 +11,9 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+
+    require('codemirror/lib/codemirror');
+    require('summernote/dist/summernote-bs4');
 } catch (e) {}
 
 /**

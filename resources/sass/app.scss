@@ -7,6 +7,10 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// summernote
+@import "~summernote/dist/summernote-bs4";
+@import "~codemirror/lib/codemirror";
+
 .breadcrumb {
     background-color: #fff !important;
     border: 1px solid #dee2e6 !important;
