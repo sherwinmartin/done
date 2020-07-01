@@ -25,7 +25,7 @@ class CreateIncidentsTable extends Migration
                 ->on('users');
             $table->date('incident_date');
             $table->text('description');
-            $table->text('action_take')
+            $table->text('action_taken')
                 ->nullable();
             $table->dateTime('employee_reviewed_date')
                 ->nullable();
