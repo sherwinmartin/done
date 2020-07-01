@@ -11,6 +11,7 @@ try {
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
+    require('jquery-ui-dist/jquery-ui.min');
 
     require('codemirror/lib/codemirror');
     require('summernote/dist/summernote-bs4');
