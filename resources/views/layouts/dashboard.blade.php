@@ -37,7 +37,7 @@
                 <div class="sidebar-sticky">
                     <ul class="nav flex-column">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">
+                            <a class="nav-link" href="{{ route('dashboard') }}">
                                 Dashboard
                             </a>
                         </li>
@@ -75,12 +75,6 @@
                     @include('layouts.partials.notifications')
                 </div>
 
-                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">{{ $page_title }}</h1>
-                    <div class="btn-toolbar mb-2 mb-md-0">
-                        @yield('page_header_options')
-                    </div>
-                </div>
                 @yield('content')
             </main>
         </div>
