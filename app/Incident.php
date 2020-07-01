@@ -87,15 +87,15 @@ class Incident extends Model
     /**
      * Delete record.
      * @param $request
-     * @return \Illuminate\Http\RedirectResponse
+     * @return bool
      */
     public static function deleteRecord($request)
     {
         if (Incident::find($request->id)->delete())
         {
-            return redirect()->route('incidents.index')->with('success', 'Incident deleted.');
+            return true;
         }
 
-        return back()->with('error', 'Incident failed to be deleted.');
+        return false;
     }
 }
