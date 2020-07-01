@@ -62,7 +62,7 @@ class IncidentType extends Model
      */
     public static function deleteRecord($request)
     {
-        if (IncidentType::find($request->id)->delete)
+        if (IncidentType::find($request->id)->delete())
         {
             return true;
         }
