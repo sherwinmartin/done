@@ -1,5 +1,5 @@
 window._ = require('lodash');
-
+window.Popper = require('@popperjs/core/dist/umd/popper-base.min');
 /**
  * We'll load jQuery and the Bootstrap jQuery plugin which provides support
  * for JavaScript based Bootstrap features such as modals and tabs. This
@@ -7,14 +7,13 @@ window._ = require('lodash');
  */
 
 try {
-    window.Popper = require('popper.js').default;
     window.$ = window.jQuery = require('jquery');
 
     require('bootstrap');
     require('jquery-ui-dist/jquery-ui.min');
 
-    require('codemirror/lib/codemirror');
-    require('summernote/dist/summernote-bs4');
+    //require('codemirror/lib/codemirror');
+    //require('summernote/dist/summernote-bs4');
 } catch (e) {}
 
 /**
